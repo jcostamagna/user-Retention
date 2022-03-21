@@ -33,4 +33,12 @@ public class RetentionModel {
         RetentionModel that = (RetentionModel) o;
         return Objects.equals(daysChain, that.daysChain);
     }
+
+    @Override
+    public String toString() {
+        return "RetentionModel{" +
+                "daysChain=" + daysChain +
+                ", RETENTION_DAYS=" + RETENTION_DAYS +
+                '}';
+    }
 }

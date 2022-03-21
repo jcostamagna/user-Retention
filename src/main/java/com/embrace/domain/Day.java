@@ -20,15 +20,15 @@ public class Day implements DayChain {
 
     @Override
     public void addActivity(int day, long user) {
-        Integer userActivity = userRetention.getOrDefault(user, 0) + 1;
+        Integer userActivity = userRetention.getOrDefault(user, 0);
 
         if (day == number) {
             this.userRetention.put(user, 1);
             return;
         }
 
-        if(userActivity == day) {
-            userRetention.put(user, userActivity);
+        if(userActivity == (day - number) ){
+            userRetention.put(user, userActivity + 1);
             return;
         }
 
@@ -53,5 +53,13 @@ public class Day implements DayChain {
     @Override
     public int hashCode() {
         return Objects.hash(userRetention, number, next);
+    }
+
+    @Override
+    public String toString() {
+        return "Day " + number +
+                " userRetention=" + userRetention +
+                ", next=" + next +
+                '}';
     }
 }
