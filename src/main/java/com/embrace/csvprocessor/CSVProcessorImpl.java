@@ -2,7 +2,7 @@ package com.embrace.csvprocessor;
 
 import com.opencsv.CSVReader;
 
-import java.io.*;
+import java.io.FileReader;
 
 public class CSVProcessorImpl implements CSVProcessor {
     private EventProcessor eventProcessor;

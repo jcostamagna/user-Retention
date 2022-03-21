@@ -6,7 +6,6 @@ import com.embrace.domain.LastDay;
 import com.embrace.domain.RetentionModel;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
