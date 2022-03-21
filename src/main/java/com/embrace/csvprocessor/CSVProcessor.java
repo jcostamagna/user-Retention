@@ -1,7 +1,7 @@
 package com.embrace.csvprocessor;
 
-import java.io.FileNotFoundException;
+import com.embrace.domain.RetentionModel;
 
 public interface CSVProcessor {
-    void read(String path) throws FileNotFoundException;
+    RetentionModel read(String path);
 }
