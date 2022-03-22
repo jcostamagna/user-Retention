@@ -28,7 +28,7 @@ public class CSVProcessorTest {
 
         CSVProcessor csvProcessor = new CSVProcessorImpl(new EventUserActivityProcessor());
 
-        RetentionModel retentionModel = csvProcessor.read(ROOT_PATH + "basic.txt");
+        RetentionModel retentionModel = csvProcessor.read(ROOT_PATH + "input/basic.txt");
 
         assertEquals(this.createExpectedRetentionModel(), retentionModel);
     }
