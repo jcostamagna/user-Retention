@@ -4,7 +4,6 @@ import com.embrace.domain.RetentionModel;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -24,10 +23,6 @@ public class CSVProcessorImpl implements CSVProcessor {
             String[] nextRecord;
 
             while ((nextRecord = csvReader.readNext()) != null) {
-                for (String cell : nextRecord) {
-                    System.out.print(cell + "\t");
-                }
-                System.out.println();
                 this.eventProcessor.addEvent(nextRecord);
             }
         }
