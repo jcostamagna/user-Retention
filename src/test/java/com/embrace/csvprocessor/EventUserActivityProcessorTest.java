@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class EventRetentionProcessorTest {
+public class EventUserActivityProcessorTest {
 
     @Test
     public void test_build_empty_model() {
