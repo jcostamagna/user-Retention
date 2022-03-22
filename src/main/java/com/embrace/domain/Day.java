@@ -1,7 +1,9 @@
 package com.embrace.domain;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 public class Day implements DayChain {
