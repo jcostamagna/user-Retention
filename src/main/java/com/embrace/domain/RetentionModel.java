@@ -36,9 +36,6 @@ public class RetentionModel {
 
     @Override
     public String toString() {
-        return "RetentionModel{" +
-                "daysChain=" + daysChain +
-                ", RETENTION_DAYS=" + RETENTION_DAYS +
-                '}';
+        return daysChain.toString();
     }
 }

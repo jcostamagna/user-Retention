@@ -1,13 +1,14 @@
 package com.embrace.domain;
 
 
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.IntStream;
 
 public class Day implements DayChain {
+    private final int RETENTION_DAYS = 14;
     private HashMap<Long, Integer> userRetention = new HashMap<>();
-    private final int number;
     private DayChain next = new LastDay();
+    private final int number;
 
     public Day(int number) {
         this.number = number;
@@ -51,15 +52,22 @@ public class Day implements DayChain {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(userRetention, number, next);
-    }
-
-    @Override
     public String toString() {
-        return "Day " + number +
-                " userRetention=" + userRetention +
-                ", next=" + next +
-                '}';
+        HashMap<Integer, Integer> frequencies = new HashMap<>();
+        this.userRetention.values().forEach(value -> frequencies.put(value, frequencies.getOrDefault(value, 0) + 1));
+
+        ArrayList<Integer> retentions = new ArrayList<>();
+        retentions.add(this.number);
+
+        StringBuffer stringBuffer = new StringBuffer();
+
+        stringBuffer.append(this.number);
+
+        IntStream.rangeClosed(1,RETENTION_DAYS).forEach(integer -> stringBuffer.append(",").append(frequencies.getOrDefault(integer, 0)));
+
+        return stringBuffer
+                .append(System.lineSeparator())
+                .append(this.next.toString())
+                .toString();
     }
 }
