@@ -1,8 +1,6 @@
-package com.embrace;
+package com.embrace.usecases;
 
-import com.embrace.csvprocessor.CSVProcessor;
 import com.embrace.domain.RetentionModel;
-import com.embrace.presenters.RetentionModelPresenter;
 
 public class UserRetention {
     private final CSVProcessor csvProcessor;
@@ -16,6 +14,8 @@ public class UserRetention {
     public void process(String path) {
         RetentionModel retentionModel = this.csvProcessor.read(path);
 
-        this.presenter.present(retentionModel);
+        RetentionFrequenciesResponse retentionFrequencies = new RetentionFrequenciesResponse(retentionModel.createFrequencies());
+
+        this.presenter.present(retentionFrequencies);
     }
 }
