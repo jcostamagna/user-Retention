@@ -53,12 +53,7 @@ public class RetentionModelTest {
 
         Day day = new Day(1, activities);
 
-        DayChain lastDay = new LastDay();
-        for(int i = 14; i >= 2; i--) {
-            Day currentDay = new Day(i);
-            currentDay.addNext(lastDay);
-            lastDay = currentDay;
-        }
+        DayChain lastDay = getDayChain(2);
 
         day.addNext(lastDay);
 
@@ -101,12 +96,7 @@ public class RetentionModelTest {
         Day day = new Day(1);
         Day secondDay = new Day(2, activities);
 
-        DayChain lastDay = new LastDay();
-        for(int i = 14; i >= 3; i--) {
-            Day currentDay = new Day(i);
-            currentDay.addNext(lastDay);
-            lastDay = currentDay;
-        }
+        DayChain lastDay = getDayChain(3);
 
         secondDay.addNext(lastDay);
         day.addNext(secondDay);
@@ -147,17 +137,22 @@ public class RetentionModelTest {
         Day secondDay = new Day(2);
         Day thirdDay = new Day(3, activitiesThirdDay);
 
-        DayChain lastDay = new LastDay();
-        for(int i = 14; i >= 4; i--) {
-            Day currentDay = new Day(i);
-            currentDay.addNext(lastDay);
-            lastDay = currentDay;
-        }
+        DayChain lastDay = getDayChain(4);
 
         thirdDay.addNext(lastDay);
         secondDay.addNext(thirdDay);
         day.addNext(secondDay);
 
         return new RetentionModel(day);
+    }
+
+    private DayChain getDayChain(int from) {
+        DayChain lastDay = new LastDay();
+        for(int i = 14; i >= from; i--) {
+            Day currentDay = new Day(i);
+            currentDay.addNext(lastDay);
+            lastDay = currentDay;
+        }
+        return lastDay;
     }
 }
