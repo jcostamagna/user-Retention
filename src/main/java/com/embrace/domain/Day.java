@@ -28,12 +28,9 @@ public class Day implements DayChain {
     public void addActivity(int day, long user) {
         Integer userActivity = userRetention.getOrDefault(user, 0);
 
-        if (day == number) {
-            this.userRetention.put(user, 1);
-            return;
-        }
+        int distanceDays = day - number;
 
-        if(userActivity == (day - number)){
+        if(userActivity == distanceDays){
             userRetention.put(user, userActivity + 1);
             return;
         }
