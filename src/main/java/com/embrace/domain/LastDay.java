@@ -1,5 +1,8 @@
 package com.embrace.domain;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class LastDay implements DayChain {
     @Override
     public void addNext(DayChain day) {}
@@ -8,12 +11,10 @@ public class LastDay implements DayChain {
     public void addActivity(int day, long user) {}
 
     @Override
-    public boolean equals(Object obj) {
-        return this.getClass().equals(obj.getClass());
-    }
+    public void appendFrequencies(ArrayList<HashMap<Integer, Integer>> frequencies) {}
 
     @Override
-    public String toString() {
-        return "";
+    public boolean equals(Object obj) {
+        return this.getClass().equals(obj.getClass());
     }
 }

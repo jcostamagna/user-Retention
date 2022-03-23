@@ -4,10 +4,8 @@ package com.embrace.domain;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
-import java.util.stream.IntStream;
 
 public class Day implements DayChain {
-    private final int RETENTION_DAYS = 14;
     private HashMap<Long, Integer> userRetention = new HashMap<>();
     private DayChain next = new LastDay();
     private final int number;
@@ -22,6 +20,11 @@ public class Day implements DayChain {
     }
 
     @Override
+    public void addNext(DayChain day) {
+        this.next = day;
+    }
+
+    @Override
     public void addActivity(int day, long user) {
         Integer userActivity = userRetention.getOrDefault(user, 0);
 
@@ -30,7 +33,7 @@ public class Day implements DayChain {
             return;
         }
 
-        if(userActivity == (day - number) ){
+        if(userActivity == (day - number)){
             userRetention.put(user, userActivity + 1);
             return;
         }
@@ -41,8 +44,17 @@ public class Day implements DayChain {
     }
 
     @Override
-    public void addNext(DayChain day) {
-        this.next = day;
+    public void appendFrequencies(ArrayList<HashMap<Integer, Integer>> frequencies) {
+        HashMap<Integer, Integer> dayFrequency = new HashMap<>();
+
+        this.userRetention.values().forEach(value -> {
+            Integer currentCount = dayFrequency.getOrDefault(value, 0);
+            dayFrequency.put(value, currentCount + 1);
+        });
+
+        frequencies.add(dayFrequency);
+
+        this.next.appendFrequencies(frequencies);
     }
 
     @Override
@@ -51,25 +63,5 @@ public class Day implements DayChain {
         if (o == null || getClass() != o.getClass()) return false;
         Day day = (Day) o;
         return Objects.equals(userRetention, day.userRetention) && Objects.equals(next, day.next);
-    }
-
-    @Override
-    public String toString() {
-        HashMap<Integer, Integer> frequencies = new HashMap<>();
-        this.userRetention.values().forEach(value -> frequencies.put(value, frequencies.getOrDefault(value, 0) + 1));
-
-        ArrayList<Integer> retentions = new ArrayList<>();
-        retentions.add(this.number);
-
-        StringBuffer stringBuffer = new StringBuffer();
-
-        stringBuffer.append(this.number);
-
-        IntStream.rangeClosed(1,RETENTION_DAYS).forEach(integer -> stringBuffer.append(",").append(frequencies.getOrDefault(integer, 0)));
-
-        return stringBuffer
-                .append(System.lineSeparator())
-                .append(this.next.toString())
-                .toString();
     }
 }
