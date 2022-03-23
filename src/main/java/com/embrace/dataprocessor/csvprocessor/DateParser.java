@@ -1,4 +1,4 @@
-package com.embrace.csvprocessor;
+package com.embrace.dataprocessor.csvprocessor;
 
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
@@ -7,7 +7,8 @@ import java.util.Date;
 
 public class DateParser {
     public int parse(String date_seconds) {
-        Date date = new Date(Long.parseLong(date_seconds)*1000);
+        Long date_miliseconds = Long.parseLong(date_seconds) * 1000;
+        Date date = new Date(date_miliseconds);
 
         LocalDateTime localDateTime = date.toInstant().atOffset(ZoneOffset.UTC).toLocalDateTime();
         OffsetDateTime offset = OffsetDateTime.of(localDateTime, ZoneOffset.UTC);

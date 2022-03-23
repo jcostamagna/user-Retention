@@ -1,4 +1,4 @@
-package com.embrace.csvprocessor;
+package com.embrace.dataprocessor.csvprocessor;
 
 import com.embrace.domain.Day;
 import com.embrace.domain.DayChain;

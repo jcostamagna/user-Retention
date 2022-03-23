@@ -1,7 +1,7 @@
 package com.embrace;
 
-import com.embrace.csvprocessor.CSVProcessorImpl;
-import com.embrace.csvprocessor.EventUserActivityProcessor;
+import com.embrace.dataprocessor.csvprocessor.CSVProcessorImpl;
+import com.embrace.dataprocessor.csvprocessor.EventUserActivityProcessor;
 import com.embrace.presenters.RetentionModelPresenterStdOut;
 import com.embrace.usecases.UserRetention;
 import org.junit.jupiter.api.AfterAll;

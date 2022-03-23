@@ -1,4 +1,4 @@
-package com.embrace.csvprocessor;
+package com.embrace.dataprocessor.csvprocessor;
 
 import org.junit.jupiter.api.Test;
 
