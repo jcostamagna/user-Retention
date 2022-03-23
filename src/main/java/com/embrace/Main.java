@@ -3,6 +3,7 @@ package com.embrace;
 import com.embrace.csvprocessor.CSVProcessorImpl;
 import com.embrace.csvprocessor.EventUserActivityProcessor;
 import com.embrace.presenters.RetentionModelPresenterStdOut;
+import com.embrace.usecases.UserRetention;
 
 import java.util.Arrays;
 import java.util.Optional;

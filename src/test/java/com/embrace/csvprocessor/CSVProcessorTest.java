@@ -4,6 +4,7 @@ import com.embrace.domain.Day;
 import com.embrace.domain.DayChain;
 import com.embrace.domain.LastDay;
 import com.embrace.domain.RetentionModel;
+import com.embrace.usecases.CSVProcessor;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
