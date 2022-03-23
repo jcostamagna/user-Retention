@@ -1,6 +1,9 @@
 package com.embrace.domain;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class RetentionModel {
@@ -26,16 +29,17 @@ public class RetentionModel {
         this.daysChain.addActivity(day, user);
     }
 
+    public List<HashMap<Integer, Integer>> createFrequencies() {
+        ArrayList<HashMap<Integer, Integer>> frequencies = new ArrayList<>();
+        daysChain.appendFrequencies(frequencies);
+        return frequencies;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RetentionModel that = (RetentionModel) o;
         return Objects.equals(daysChain, that.daysChain);
-    }
-
-    @Override
-    public String toString() {
-        return daysChain.toString();
     }
 }
