@@ -16,8 +16,10 @@ public class EventUserActivityProcessor implements EventProcessor {
         if (event.length < 2) {
             return;
         }
+        
         int day = parser.parse(event[0]);
         long user = Long.parseLong(event[1]);
+
         model.addActivity(day, user);
     }
 }
