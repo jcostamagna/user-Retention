@@ -1,6 +1,7 @@
 package com.embrace.csvprocessor;
 
 import com.embrace.domain.RetentionModel;
+import com.embrace.usecases.CSVProcessor;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
@@ -27,7 +28,7 @@ public class CSVProcessorImpl implements CSVProcessor {
             }
         }
         catch (IOException | CsvValidationException e) {
-            e.printStackTrace();
+            System.err.println("Error found while processing csv file. Please provide a valid csv path.");
         }
         return eventProcessor.build();
     }
