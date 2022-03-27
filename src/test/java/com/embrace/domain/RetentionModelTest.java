@@ -27,6 +27,19 @@ public class RetentionModelTest {
     }
 
     @Test
+    public void test_add_same_event() {
+        RetentionModel retentionModel = new RetentionModel();
+
+        retentionModel.addActivity(1, 1L);
+        retentionModel.addActivity(1, 1L);
+        retentionModel.addActivity(1, 1L);
+        retentionModel.addActivity(1, 1L);
+        retentionModel.addActivity(1, 1L);
+
+        assertEquals(this.createRetentionModelWithUserActivity(1L, 1), retentionModel);
+    }
+
+    @Test
     public void test_add_consecutive_events() {
         RetentionModel retentionModel = new RetentionModel();
 
@@ -75,6 +88,11 @@ public class RetentionModelTest {
 
         retentionModel.addActivity(2, 2L);
         retentionModel.addActivity(2, 2L);
+        retentionModel.addActivity(2, 2L);
+        retentionModel.addActivity(2, 2L);
+        retentionModel.addActivity(2, 2L);
+        retentionModel.addActivity(2, 2L);
+        retentionModel.addActivity(2, 2L);
 
         assertEquals(this.createRetentionModelWithSecondDayActivity(2L, 1), retentionModel);
     }
@@ -83,6 +101,9 @@ public class RetentionModelTest {
     public void test_add_two_events_consecutive_in_second_day() {
         RetentionModel retentionModel = new RetentionModel();
 
+        retentionModel.addActivity(2, 2L);
+        retentionModel.addActivity(2, 2L);
+        retentionModel.addActivity(2, 2L);
         retentionModel.addActivity(2, 2L);
         retentionModel.addActivity(3, 2L);
 
@@ -109,7 +130,18 @@ public class RetentionModelTest {
         RetentionModel retentionModel = new RetentionModel();
 
         retentionModel.addActivity(1, 2L);
+        retentionModel.addActivity(1, 2L);
+        retentionModel.addActivity(1, 2L);
+        retentionModel.addActivity(1, 2L);
+        retentionModel.addActivity(1, 2L);
+        retentionModel.addActivity(1, 2L);
+
         retentionModel.addActivity(3, 2L);
+        retentionModel.addActivity(3, 2L);
+        retentionModel.addActivity(3, 2L);
+        retentionModel.addActivity(3, 2L);
+        retentionModel.addActivity(3, 2L);
+
 
         assertEquals(this.createRetentionModelWithThirdDayActivity(2L, 1), retentionModel);
     }
@@ -120,7 +152,17 @@ public class RetentionModelTest {
 
         retentionModel.addActivity(1, 2L);
         retentionModel.addActivity(3, 2L);
+        retentionModel.addActivity(3, 2L);
+        retentionModel.addActivity(3, 2L);
+        retentionModel.addActivity(3, 2L);
         retentionModel.addActivity(4, 2L);
+        retentionModel.addActivity(4, 2L);
+        retentionModel.addActivity(4, 2L);
+        retentionModel.addActivity(4, 2L);
+        retentionModel.addActivity(5, 2L);
+        retentionModel.addActivity(5, 2L);
+        retentionModel.addActivity(5, 2L);
+        retentionModel.addActivity(5, 2L);
         retentionModel.addActivity(5, 2L);
 
         assertEquals(this.createRetentionModelWithThirdDayActivity(2L, 3), retentionModel);

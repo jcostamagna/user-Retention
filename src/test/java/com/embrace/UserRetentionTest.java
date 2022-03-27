@@ -4,9 +4,7 @@ import com.embrace.dataprocessor.csvprocessor.CSVProcessorImpl;
 import com.embrace.dataprocessor.csvprocessor.EventUserActivityProcessor;
 import com.embrace.presenters.RetentionModelPresenterStdOut;
 import com.embrace.usecases.UserRetention;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -31,11 +29,27 @@ public class UserRetentionTest {
         System.setOut(originalOut);
     }
 
+    @AfterEach
+    public void resetStreams() {
+        outContent.reset();
+    }
+
     @Test
     public void test_basic_case() throws IOException {
         UserRetention userRetention = new UserRetention(new CSVProcessorImpl(new EventUserActivityProcessor()), new RetentionModelPresenterStdOut());
 
         userRetention.process(ROOT_PATH_INPUT + "input/basic.txt");
+
+        String expectedResponse = Files.readString(Path.of(ROOT_PATH_INPUT + "output/basic_response.txt"));
+
+        assertEquals(expectedResponse, outContent.toString());
+    }
+
+    @Test
+    public void test_complex_case() throws IOException {
+        UserRetention userRetention = new UserRetention(new CSVProcessorImpl(new EventUserActivityProcessor()), new RetentionModelPresenterStdOut());
+
+        userRetention.process(ROOT_PATH_INPUT + "input/complex.txt");
 
         String expectedResponse = Files.readString(Path.of(ROOT_PATH_INPUT + "output/basic_response.txt"));
 
