@@ -30,12 +30,12 @@ public class Day implements DayChain {
 
         int distanceDays = day - number;
 
-        if(userActivity == distanceDays){
-            userRetention.put(user, userActivity + 1);
+        if(userActivity >= distanceDays){
+            userRetention.put(user, distanceDays + 1);
             return;
         }
 
-        if (day > number) {
+        if (number < day) {
             next.addActivity(day, user);
         }
     }
